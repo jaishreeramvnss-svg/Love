@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Sweetheart ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#2b0000,#8b0000);
+    font-family:'Segoe UI',sans-serif;
+}
+.heart{
+    position:absolute;
+    bottom:-20px;
+    color:rgba(255,0,0,0.7);
+    animation:floatUp 6s linear infinite;
+}
+@keyframes floatUp{
+    0%{transform:translateY(0);opacity:0}
+    10%{opacity:1}
+    100%{transform:translateY(-120vh);opacity:0}
+}
+.card{
+    background:#fff;
+    padding:28px;
+    width:340px;
+    border-radius:22px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.4);
+    z-index:10;
+}
+.card h2{color:darkred;}
+.card p{
+    color:#7a0000;
+    font-size:14px;
+    line-height:1.6;
+}
+.buttons{
+    margin-top:18px;
+    position:relative;
+    height:60px;
+}
+button{
+    padding:10px 18px;
+    border:none;
+    border-radius:20px;
+    font-size:14px;
+    cursor:pointer;
+}
+#yes{background:darkred;color:white;}
+#no{
+    background:#ccc;
+    position:absolute;
+    left:180px;
+    top:0;
+}
+.no-text{
+    font-size:12px;
+    color:#b00000;
+    margin-top:5px;
+    display:none;
+}
+.firework{
+    position:absolute;
+    width:6px;
+    height:6px;
+    background:red;
+    border-radius:50%;
+    animation:boom 1s linear forwards;
+}
+@keyframes boom{
+    to{
+        transform:translate(var(--x),var(--y));
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/10/14/audio_3c0c7c1fa1.mp3">
+</audio>
+
+<div class="card" id="card">
+
+<h2>💖 Meri Sweetheart 💖</h2>
+
+<p>
+Thank you meri sweetheart ❤️ mere saath hamesha rehne ke liye 🫶<br><br>
+Chahe hum kitna bhi gussa kar lein 😔 bina soche bol dein 😞  
+phir bhi mere saath rehne ke liye thank you jaan 💖<br><br>
+Mera bahut mann karta hai pehle jaise milein, baat karein 🥺  
+lekin ho hi nahi pata…<br><br>
+Tum college ke programs ke liye itni khush rehti ho ✨  
+par humse milne ke liye nahi…  
+bas isi soch me us din bol diya tha 😔<br><br>
+Tum mere liye bahut important ho ❤️  
+isi liye tumhari chhoti si baat bhi mujhe bahut hurt karti hai 💔<br><br>
+Tum meri jaan ho, samjhi? 🥹❤️
+</p>
+
+<div class="buttons">
+<button id="yes">YES 💍</button>
+<button id="no">NO 🙈</button>
+</div>
+<div class="no-text" id="noText">ab bana do proposal 😂</div>
+
+</div>
+
+<script>
+const noBtn=document.getElementById("no");
+const noText=document.getElementById("noText");
+const yesBtn=document.getElementById("yes");
+const card=document.getElementById("card");
+
+noBtn.addEventListener("mouseover",move);
+noBtn.addEventListener("click",move);
+
+function move(){
+    noText.style.display="block";
+    noBtn.style.left=Math.random()*200+"px";
+    noBtn.style.top=Math.random()*40+"px";
+}
+
+yesBtn.onclick=()=>{
+card.innerHTML=`
+<h2>🥰 Yay! She said YES 💍</h2>
+<p style="color:darkred;font-size:15px;">
+Thank you meri jaan ❤️<br>
+Tum meri duniya ho 🌍✨
+</p>`;
+fireworks();
+};
+
+function fireworks(){
+for(let i=0;i<40;i++){
+ const f=document.createElement("div");
+ f.className="firework";
+ f.style.left="50%";
+ f.style.top="50%";
+ f.style.setProperty("--x",(Math.random()*400-200)+"px");
+ f.style.setProperty("--y",(Math.random()*400-200)+"px");
+ document.body.appendChild(f);
+ setTimeout(()=>f.remove(),1000);
+}
+}
+
+setInterval(()=>{
+ const h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="❤️";
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize=(15+Math.random()*20)+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},400);
+</script>
+
+</body>
+</html>
